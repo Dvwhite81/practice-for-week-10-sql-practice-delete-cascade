@@ -12,7 +12,7 @@ In this practice, you will use these example tables to make your queries:
 
 ![bands-musicians-db-schema]
 
-Seed data has been provided for each table as follows: 
+Seed data has been provided for each table as follows:
 
 Table `bands`:
 
@@ -48,7 +48,7 @@ and insert the rows shown above.
 .read music.sql
 ```
 
-> Remember: You can re-run this read command anytime you want to restore the 
+> Remember: You can re-run this read command anytime you want to restore the
 > data you have deleted.
 
 ## Step 1: Delete without `CASCADE`
@@ -56,6 +56,8 @@ and insert the rows shown above.
 Try to delete the band with an `id` of `1`.
 
 > You should see an error. Does this error make sense?
+
+> - Deleting the band would lead to musicians having a missing reference, causing an error.
 
 ## Step 2: Add `CASCADE`
 
@@ -68,7 +70,7 @@ the `.read music.sql` command to reread your updated table definitions.
 
 Attempt the same deletion of the band with `id` of `1`.
 
-If the `DELETE` worked as expected, you will see the following data when you 
+If the `DELETE` worked as expected, you will see the following data when you
 run `SELECT * FROM musicians;`.
 
 | `id` | `first_name` | `last_name` | `band_id` |
@@ -82,6 +84,8 @@ run `SELECT * FROM musicians;`.
 | 10   | Victoria     | Cremonesi   | 5         |
 
 Can you explain why this result is expected?
+
+> - The foreign key needs "ON DELETE CASCADE" so it will also delete all musicians associated with the band being deleted
 
 ## Congratulations!
 
